@@ -1,6 +1,7 @@
 package com.daw.services;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -105,7 +106,17 @@ public class TareaService {
 		return this.tareaCrudRepository.findByEstado(Estado.COMPLETADA);
 	}
 	
+	public List<Tarea> getVencidas(){
+		return this.tareaCrudRepository.findByFechaVencimientoBefore(LocalDateTime.now());
+	}
 	
+	public List<Tarea> getNoVencidas(){
+		return this.tareaCrudRepository.findByFechaVencimientoAfter(LocalDateTime.now());
+	}
+	
+	public List<Tarea> getByTitulo (String titulo){
+		return this.tareaCrudRepository.findByTituloContaining(titulo);
+	}
 	
 	
 }

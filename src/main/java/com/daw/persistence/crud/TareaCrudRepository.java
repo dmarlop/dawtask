@@ -15,4 +15,5 @@ public interface TareaCrudRepository extends CrudRepository<Tarea, Integer> {
 	List<Tarea> findByTituloStartingWith(String nombre);
 	List<Tarea> findByFechaVencimientoBefore(LocalDateTime fecha);
 	List<Tarea> findByFechaVencimientoAfter(LocalDateTime fecha);
+	List<Tarea> findByTituloContaining(String titulo); 
 }

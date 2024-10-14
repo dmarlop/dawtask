@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.daw.persistence.entities.Tarea;
@@ -125,6 +126,24 @@ public class TareaController {
 	@GetMapping("/proceso")
 	public ResponseEntity<List<Tarea>> proceso(){
 		return new ResponseEntity<List<Tarea>>(this.tareaService.getProceso(), HttpStatus.OK);
+				
+	}
+	
+	@GetMapping("/vencidas")
+	public ResponseEntity<List<Tarea>> vencidas(){
+		return new ResponseEntity<List<Tarea>>(this.tareaService.getVencidas(), HttpStatus.OK);
+				
+	}
+	
+	@GetMapping("/noVencidas")
+	public ResponseEntity<List<Tarea>> noVencidas(){
+		return new ResponseEntity<List<Tarea>>(this.tareaService.getNoVencidas(), HttpStatus.OK);
+				
+	}
+	
+	@GetMapping("/titulo")
+	public ResponseEntity<List<Tarea>> buscarPorTitulo(@RequestParam("titulo") String titulo){
+		return new ResponseEntity<List<Tarea>>(this.tareaService.getByTitulo(titulo), HttpStatus.OK);
 				
 	}
 	
